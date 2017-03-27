@@ -1,3 +1,12 @@
+const execScript = fn => {
+	const script_text = "(" + fn.toString() + ")()";
+	const script = document.createElement("script");
+	script.appendChild(document.createTextNode(script_text));
+	const parent = document.head;
+	parent.appendChild(script);
+	parent.removeChild(script);
+};
+
 execScript(() => {
 	"use strict";
 
@@ -26,9 +35,9 @@ execScript(() => {
 		}
 	});
 
-	function getPlayer() {
+	const getPlayer = () => {
 		return document.getElementById("movie_player");
-	}
+	};
 	const Video = {
 		changeVolume: diff => {
 			const player = getPlayer();
@@ -42,12 +51,3 @@ execScript(() => {
 		}
 	};
 });
-
-function execScript(fn){
-	const script_text = "(" + fn.toString() + ")()";
-	const script = document.createElement("script");
-	script.appendChild(document.createTextNode(script_text));
-	const parent = document.head;
-	parent.appendChild(script);
-	parent.removeChild(script);
-}
