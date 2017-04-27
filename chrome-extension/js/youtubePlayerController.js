@@ -1,5 +1,5 @@
 const execScript = fn => {
-	const script_text = "(" + fn.toString() + ")()";
+	const script_text = `(${fn.toString()})()`;
 	const script = document.createElement("script");
 	script.appendChild(document.createTextNode(script_text));
 	const parent = document.head;
